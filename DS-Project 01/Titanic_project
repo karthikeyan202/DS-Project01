@@ -1,0 +1,19 @@
+import pandas as out
+import matplotlib.pyplot as test
+vs=out.read_csv('gender_submission.csv')
+vs.rename(columns= {"PassengerId":"Number"},inplace=True)
+print(vs)
+filter=vs[vs["Survived"]==1]
+print(filter)
+Total_Pass = vs["Survived"].value_counts()
+total = len(vs)
+a = Total_Pass[0]
+perc = (a / total) * 100
+print(f"Percentage of non-survivors is: {perc:.2f}%")
+Total_Pass.plot(kind = 'bar',color = ["purple","lightgreen"])
+test.xlabel("Survived people")
+test.ylabel("Non-Survived people")
+test.title("Survived passenger in the flight")
+test.xticks(rotation = 0)
+test.yticks(rotation = 18)
+test.show()
